@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "DarkPattern Buster",
+  "version": "1.0.0",
+  "description": "Detects and neutralizes deceptive e-commerce UI patterns.",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"]
+    }
+  ],
+  "permissions": [
+    "storage",
+    "activeTab"
+  ]
+}
