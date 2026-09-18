@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dark Pattern Testbench</title>
+  <style>
+    body { font-family: sans-serif; padding: 40px; background: #f8fafc; }
+    .card { background: white; border-radius: 8px; padding: 24px; max-width: 500px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+    .timer { font-size: 24px; font-weight: bold; color: #dc2626; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Special Flash Sale!</h2>
+    <p>Your reserved cart will expire in:</p>
+    <div class="timer" id="countdown">14:59</div>
+  </div>
+
+  <script>
+    let timeLeft = 14 * 60 + 59;
+    const timerElement = document.getElementById('countdown');
+    setInterval(() => {
+      if (timeLeft <= 0) return;
+      timeLeft--;
+      const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+      const s = String(timeLeft % 60).padStart(2, '0');
+      timerElement.innerText = `${m}:${s}`;
+    }, 1000);
+  </script>
+</body>
+</html>
